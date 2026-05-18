@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lion Empire Outlet</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar" id="sidebar">
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo-box">
+            <img src="logo-transparente.png" class="logo">
+        </div>
+
+        <ul class="menu">
+            <li class="nav-item active">🏠 Início</li>
+            <li class="nav-item">⭐ Destaques</li>
+            <li class="nav-item">💎 Acessórios</li>
+            <li class="nav-item">🌹 Perfumes</li>
+            <li class="nav-item">👟 Chinelos</li>
+        </ul>
+
+        <div class="social">
+            <a href="https://www.instagram.com/lion_empire_outlet/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@lionempire.outlet?_r=1&_t=ZS-95iDfzYosZJ" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </aside>
+
+    <button class="reopen-btn" id="reopenBtn" onclick="toggleSidebar()" style="display:none;">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <main class="main" id="mainContent">
+        <div class="content">
+
+            <div class="topo">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="O que você está buscando?" autocomplete="off">
+                    <button class="search-clear" id="searchClear" onclick="clearSearch()"><i class="fas fa-times"></i></button>
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
+            </div>
+
+            <!-- PÁGINA DE RESULTADOS -->
+            <section class="search-results-page" id="searchResultsPage">
+                <div class="search-results-header">
+                    <button class="search-results-back" onclick="clearSearch()">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <h2>Resultados para: <span id="searchResultsQuery"></span></h2>
+                    <p id="searchResultsCount"></p>
+                </div>
+                <div class="search-results-grid" id="searchResultsGrid"></div>
+            </section>
+
+            <div class="content-main" id="contentMain">
+
+            <section class="banner">
+                <img src="banner-lion.png">
+            </section>
+
+            <section class="categorias-container">
+                <div class="titulo-categorias">
+                    <h2>Categorias principais:</h2>
+                </div>
+
+                <div class="categorias">
+                    <div class="cat"><img src="imgcategorias/shorts.png"><p>Shorts</p></div>
+                    <div class="cat"><img src="imgcategorias/bones.png"><p>Bonés</p></div>
+                    <div class="cat"><img src="imgcategorias/calcas.png"><p>Calças</p></div>
+                    <div class="cat"><img src="imgcategorias/time.png"><p>Time</p></div>
+                    <div class="cat"><img src="imgcategorias/premium.png"><p>Premium</p></div>
+                    <div class="cat"><img src="imgcategorias/relogios.png"><p>Relógios</p></div>
+                    <div class="cat"><img src="imgcategorias/tenis.png"><p>Tênis</p></div>
+                </div>
+            </section>
+
+            <section class="produtos" id="sec-destaques">
+                <h2>🔥 <span>Destaques</span></h2>
+
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('productSlider', -1)">❮</button>
+                    
+                    <div class="grid" id="productSlider">
+                        
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p1-frente.png" class="img-frente">
+                                <img src="img-destaques/p1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camiseta Masculina Adulto</h3>
+                            <p>R$ 27,89</p>
+                            <a href="https://onelink.shein.com/3/5n1jg83mvy21" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p2-frente.png" class="img-frente">
+                                <img src="img-destaques/p2-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity LEGND Camiseta Minimalista</h3>
+                            <p>R$ 55,96</p>
+                            <a href="https://onelink.shein.com/3/5n1jnmgsvmkj" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p3-frente.png" class="img-frente">
+                                <img src="img-destaques/p3-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Conjunto Moda Verão Camiseta + Short</h3>
+                            <p>R$ 109,90</p>
+                            <a href="https://onelink.shein.com/3/5n1jtjk51jy2" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p4-frente.png" class="img-frente">
+                                <img src="img-destaques/p4-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Camiseta Premium</h3>
+                            <p>R$ 34,30</p>
+                            <a href="https://onelink.shein.com/3/5n1jxhmd67gi" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p6-frente.png" class="img-frente">
+                                <img src="img-destaques/p6-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Claim Dot Camiseta Masculina</h3>
+                            <p>R$ 59,92</p>
+                            <a href="https://onelink.shein.com/3/5n1k2h66f75w" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p8-frente.png" class="img-frente">
+                                <img src="img-destaques/p8-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Calça Cargo Masculina Bolsos Largo</h3>
+                            <p>R$ 62,00</p>
+                            <a href="https://onelink.shein.com/3/5n1k70xqrr5j" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p9-frente.png" class="img-frente">
+                                <img src="img-destaques/p9-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Calça Cargo Jeans Preto Estonado</h3>
+                            <p>R$ 83,00</p>
+                            <a href="https://onelink.shein.com/3/5n1k8o4o4p4h" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p10-frente.png" class="img-frente">
+                                <img src="img-destaques/p10-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity EMRG Denim Desgastados</h3>
+                            <p>R$ 218,15</p>
+                            <a href="https://onelink.shein.com/3/5n1kd9v9mpmt" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p11-frente.png" class="img-frente">
+                                <img src="img-destaques/p11-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Bermuda Jeans Balão Baggy Preto</h3>
+                            <p>R$ 69,98</p>
+                            <a href="https://onelink.shein.com/3/5n1kfoomrg4d" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p12-frente.png" class="img-frente">
+                                <img src="img-destaques/p12-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Short Moletinho Masculino</h3>
+                            <p>R$ 42,90</p>
+                            <a href="https://onelink.shein.com/3/5n1kihb7bx9c" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p13-frente.png" class="img-frente">
+                                <img src="img-destaques/p13-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Blusa Moletom Liso Masculino</h3>
+                            <p>R$ 55,98</p>
+                            <a href="https://onelink.shein.com/3/5n1kl02morqs" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p14-frente.png" class="img-frente">
+                                <img src="img-destaques/p14-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Blusa Frio Paris Moletom</h3>
+                            <p>R$ 54,90</p>
+                            <a href="https://onelink.shein.com/3/5n1kn50tv6kj" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-destaques/p15-frente.png" class="img-frente">
+                                <img src="img-destaques/p15-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Boné de beisebol ajustável</h3>
+                            <p>R$ 28,99</p>
+                            <a href="https://onelink.shein.com/3/5n1kp22x0tvu" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlider('productSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            <section class="sessao-banners-categorias">
+                <div class="banner-categoria" data-filter="camisa">
+                    <img src="banner-camisetas.png" alt="Camisetas">
+                    <div class="overlay-banner">
+                        <h2>Camisetas</h2>
+                        <a href="#" class="btn-comprar">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <div class="banner-categoria" data-filter="shorts">
+                    <img src="banner-bermudas.png" alt="Bermudas">
+                    <div class="overlay-banner">
+                        <h2>Bermudas</h2>
+                        <a href="#" class="btn-comprar">Comprar Agora</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produtos" id="sec-moletons">
+                <h2>❄️ <span>Conjuntos de Moletons</span></h2>
+
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('moletomSlider', -1)">❮</button>
+                    
+                    <div class="grid" id="moletomSlider">
+                        
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m1-frente.png" class="img-frente">
+                                <img src="img-moletons/m1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity EMRG 2 Peças Moletom</h3>
+                            <p>R$ 183,16</p>
+                            <a href="https://onelink.shein.com/3/5n4qs4ux9irh" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m2-frente.png" class="img-frente">
+                                <img src="img-moletons/m2-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity EMRG Moletom Masculino</h3>
+                            <p>R$ 158,54</p>
+                            <a href="https://onelink.shein.com/3/5n4qujoa7xpo" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m3-frente.png" class="img-frente">
+                                <img src="img-moletons/m3-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Conjunto Masculino Moletom Casual</h3>
+                            <p>R$ 143,00</p>
+                            <a href="https://onelink.shein.com/3/5n4qxe9w3ho6" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m4-frente.png" class="img-frente">
+                                <img src="img-moletons/m4-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity Fever City Conjunto</h3>
+                            <p>R$ 174,03</p>
+                            <a href="https://onelink.shein.com/3/5n4qz1gth4w3" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m5-frente.png" class="img-frente">
+                                <img src="img-moletons/m5-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Moletom Masculino com Capuz</h3>
+                            <p>R$ 165,90</p>
+                            <a href="https://onelink.shein.com/3/5n4r35g4vuja" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m6-frente.png" class="img-frente">
+                                <img src="img-moletons/m6-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity Spaced Out Moletom</h3>
+                            <p>R$ 192,20</p>
+                            <a href="https://onelink.shein.com/3/5n4r5u4nf8kt" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m7-frente.png" class="img-frente">
+                                <img src="img-moletons/m7-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Moletom com Estampa de Letras</h3>
+                            <p>R$ 138,50</p>
+                            <a href="https://onelink.shein.com/3/5n4r7jalxn2d" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m8-frente.png" class="img-frente">
+                                <img src="img-moletons/m8-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Conjunto Moletom Básico Masculino</h3>
+                            <p>R$ 125,90</p>
+                            <a href="https://onelink.shein.com/3/5n4ra7z4fmkq" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m9-frente.png" class="img-frente">
+                                <img src="img-moletons/m9-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Moletom Urbano Street Style</h3>
+                            <p>R$ 155,00</p>
+                            <a href="https://onelink.shein.com/3/5n4rezmt7p54" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m10-frente.png" class="img-frente">
+                                <img src="img-moletons/m10-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Manfinity EMRG Bloco de Cores</h3>
+                            <p>R$ 168,40</p>
+                            <a href="https://onelink.shein.com/3/5n4rh6k1pw70" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m11-frente.png" class="img-frente">
+                                <img src="img-moletons/m11-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Moletom Fleece Forrado</h3>
+                            <p>R$ 189,90</p>
+                            <a href="https://onelink.shein.com/3/5n4rj1n3jrc4" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-moletons/m12-frente.png" class="img-frente">
+                                <img src="img-moletons/m12-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Conjunto Estampa Minimalista</h3>
+                            <p>R$ 140,72</p>
+                            <a href="https://onelink.shein.com/3/5n4rkiwxlxz3" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlider('moletomSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            <section class="sessao-banners-categorias">
+                <div class="banner-categoria" data-filter="tenis">
+                    <img src="banner-calçados.png" alt="Calçados">
+                    <div class="overlay-banner">
+                        <h2>Calçados</h2>
+                        <a href="#sec-calcados" class="btn-comprar">Comprar Agora</a>
+                    </div>
+                </div>
+                <div class="banner-categoria" data-filter="chinelo">
+                    <img src="banner-chinelos.png" alt="Chinelos">
+                    <div class="overlay-banner">
+                        <h2>Chinelos</h2>
+                        <a href="#sec-chinelos" class="btn-comprar">Comprar Agora</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produtos" id="sec-times">
+                <h2>⚽ <span>Camisas de Times</span></h2>
+
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('timesSlider', -1)">❮</button>
+
+                    <div class="grid" id="timesSlider">
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t1-frente.png" class="img-frente">
+                                <img src="img-times/t1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa São Paulo I 25/26 Torcedor</h3>
+                            <p>R$ 189,99</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-sao-paulo-ii-2526-sn-torcedor-new-balance-masculina-39V-1650-056" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t2-frente.png" class="img-frente">
+                                <img src="img-times/t2-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Corinthians I 2025/26 Jogador</h3>
+                            <p>R$ 429,99</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-nike-corinthians-i-202526-jogador-masculina-SGL-0184-028" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t3-frente.png" class="img-frente">
+                                <img src="img-times/t3-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Palmeiras I 24/25 torcedor</h3>
+                            <p>R$ 189,90</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-palmeiras-i-2425-sn-torcedor-puma-masculina-PI3-1918-060" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t4-frente.png" class="img-frente">
+                                <img src="img-times/t4-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Santos 25/26 Torcedor</h3>
+                            <p>R$ 170,99</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-santos-2526-sn-torcedor-edicao-especial-umbro-masculina-2IB-2265-108" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t5-frente.png" class="img-frente">
+                                <img src="img-times/t5-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Atlético Mineiro I 23/24 Torcedor</h3>
+                            <p>R$ 249,90</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-atletico-mineiro-i-2324-sn-torcedor-adidas-masculina-FB8-4620-026" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t6-frente.png" class="img-frente">
+                                <img src="img-times/t6-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Flamengo I 25/26 Torcedor</h3>
+                            <p>R$ 379,99</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-flamengo-i-2526-sn-torcedor-adidas-masculina-FBA-3565-006" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t7-frente.png" class="img-frente">
+                                <img src="img-times/t7-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Botafogo I 25/26 Torcedor</h3>
+                            <p>R$ 123,49</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-botafogo-i-2526-sn-torcedor-reebok-masculina-D19-809O-028" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-times/t8-frente.png" class="img-frente">
+                                <img src="img-times/t8-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Camisa Vasco I 25/26 Jogador</h3>
+                            <p>R$ 209,90</p>
+                            <a href="https://click.linksynergy.com/deeplink?id=rVAKHqQVYn0&mid=43984&murl=https%3A%2F%2Fwww.netshoes.com.br%2Fp%2Fcamisa-vasco-i-2526-sn-jogador-kappa-masculino-D24-7038-026" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlider('timesSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            <section class="sessao-banners-categorias">
+                <div class="banner-categoria" data-filter="bones">
+                    <img src="banner-bones.png" alt="Bonés">
+                    <div class="overlay-banner">
+                        <h2>Bonés</h2>
+                        <a href="#sec-bones" class="btn-comprar">Comprar Agora</a>
+                    </div>
+                </div>
+                <div class="banner-categoria" data-filter="perfume">
+                    <img src="banner-perfumes.png" alt="Perfumes">
+                    <div class="overlay-banner">
+                        <h2>Perfumes</h2>
+                        <a href="#sec-perfumes" class="btn-comprar">Comprar Agora</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produtos sec-hidden" id="sec-bones">
+                <div class="grid" id="bonesSlider">
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-bones/b1-frente.png" class="img-frente">
+                                <img src="img-bones/b1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Bone Vinty Algodão Destroyed</h3>
+                            <p>R$ 42,60</p>
+                            <a href="https://s.shopee.com.br/9pb5bE2oka" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-bones/b2-frente.png" class="img-frente">
+                                <img src="img-bones/b2-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Boné Mercedes Bens Petronas Strapback</h3>
+                            <p>R$ 49,90</p>
+                            <a href="https://s.shopee.com.br/5flWe13aWu" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-bones/b3-frente.png" class="img-frente">
+                                <img src="img-bones/b3-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Boné Five Panel Aba Reta</h3>
+                            <p>R$ 46,90</p>
+                            <a href="https://s.shopee.com.br/70GuEcPbdY" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-bones/b4-frente.png" class="img-frente">
+                                <img src="img-bones/b4-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Boné Fé Hype Original Aba Curva</h3>
+                            <p>R$ 39,90</p>
+                            <a href="https://s.shopee.com.br/70GuF02A7N" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-bones/b5-frente.png" class="img-frente">
+                                <img src="img-bones/b5-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Boné Anth co. NYC Fita New York</h3>
+                            <p>R$ 54,98</p>
+                            <a href="https://s.shopee.com.br/6fe3qku8lU" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-bones/b6-frente.png" class="img-frente">
+                                <img src="img-bones/b6-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Boné Quiksilver Masculino</h3>
+                            <p>R$ 43,50</p>
+                            <a href="https://s.shopee.com.br/9ALOpoQevY" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                </div>
+            </section>
+
+            <section class="produtos" id="sec-esportivos">
+                <h2>⚡ <span>Conjuntos Esportivos</span></h2>
+
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('esportivoSlider', -1)">❮</button>
+
+                    <div class="grid" id="esportivoSlider">
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-esportivos/e1-frente.png" class="img-frente">
+                                <img src="img-esportivos/e1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Kit Conjunto Dry Fit Premium Short + Camisa</h3>
+                            <p>R$ 65,70</p>
+                            <a href="https://s.shopee.com.br/9AKz1Yi74M" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-esportivos/e2-frente.png" class="img-frente">
+                                <img src="img-esportivos/e2-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Jaqueta Masculina Esportiva Dri Fit</h3>
+                            <p>R$ 72,00</p>
+                            <a href="https://s.shopee.com.br/6VKDqjdfIN" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-esportivos/e3-frente.png" class="img-frente">
+                                <img src="img-esportivos/e3-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Moletom Club Unissex Casual</h3>
+                            <p>R$ 218,41</p>
+                            <a href="https://s.shopee.com.br/9fHFcjNiRo" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-esportivos/e4-frente.png" class="img-frente">
+                                <img src="img-esportivos/e4-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Conjunto Calor Club Cinza Polo + Short</h3>
+                            <p>R$ 104,50</p>
+                            <a href="https://s.shopee.com.br/20roWMnLXP" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-esportivos/e5-frente.png" class="img-frente">
+                                <img src="img-esportivos/e5-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Kit Short+Camiseta Dry Fit</h3>
+                            <p>R$ 53,99</p>
+                            <a href="https://s.shopee.com.br/50VQ66f4NQ" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis-fit">
+                                <img src="img-esportivos/e6-frente.png" class="img-frente">
+                                <img src="img-esportivos/e6-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Tênis Masculino Esportivo DM DAMANDO</h3>
+                            <p>R$ 59,90</p>
+                            <a href="https://s.shopee.com.br/16lmT6gfC" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis-fit">
+                                <img src="img-esportivos/e7-frente.png" class="img-frente">
+                                <img src="img-esportivos/e7-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Tênis Masculino Esportivo</h3>
+                            <p>R$ 89,10</p>
+                            <a href="https://s.shopee.com.br/LjcBKGtCI" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover">
+                                <img src="img-esportivos/e8-frente.png" class="img-frente">
+                                <img src="img-esportivos/e8-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Tênis Masculino + Relógio Digital</h3>
+                            <p>R$ 59,70</p>
+                            <a href="https://s.shopee.com.br/3qJULwGmz7" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis">
+                                <img src="img-esportivos/e9-frente.png" class="img-frente">
+                                <img src="img-esportivos/e9-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Tenis Esportivo Original Fitt Shoes</h3>
+                            <p>R$ 59,30</p>
+                            <a href="https://s.shopee.com.br/50VRkHcIZw" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis">
+                                <img src="img-esportivos/e10-frente.png" class="img-frente">
+                                <img src="img-esportivos/e10-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Tênis Asics Raiden 4 Masculino Treino Caminhada</h3>
+                            <p>R$ 241,28</p>
+                            <a href="https://s.shopee.com.br/3qJUMTKRHA" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlider('esportivoSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            
+            <section class="produtos sec-hidden" id="sec-acessorios">
+                <h2>💎 <span>Acessórios</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('acessoriosSlider', -1)">❮</button>
+                    <div class="grid" id="acessoriosSlider">
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis">
+                                <img src="img-acessorios/a1-frente.png" class="img-frente">
+                                <img src="img-acessorios/a1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Corrente Grumet Escama De Peixe</h3>
+                            <p>R$ 63,00</p>
+                            <a href="https://s.shopee.com.br/9zuc9fQuHF" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                    </div>
+                    <button class="slider-btn next" onclick="moveSlider('acessoriosSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            <section class="produtos sec-hidden" id="sec-perfumes">
+                <h2>🌹 <span>Perfumes</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('perfumesSlider', -1)">❮</button>
+                    <div class="grid" id="perfumesSlider">
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis">
+                                <img src="img-perfumes/pf1-frente.png" class="img-frente">
+                                <img src="img-perfumes/pf1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Kaiak Desodorante Colonia</h3>
+                            <p>R$ 128,35</p>
+                            <a href="https://s.shopee.com.br/8ASxySB0gj" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                    </div>
+                    <button class="slider-btn next" onclick="moveSlider('perfumesSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            <section class="produtos sec-hidden" id="sec-chinelos">
+                <h2>👟 <span>Chinelos</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="slider-btn prev" onclick="moveSlider('chinelosSlider', -1)">❮</button>
+                    <div class="grid" id="chinelosSlider">
+                        <div class="card">
+                            <div class="card-img-container has-hover tenis">
+                                <img src="img-chinelos/ch1-frente.png" class="img-frente">
+                                <img src="img-chinelos/ch1-verso.png" class="img-verso" loading="lazy">
+                            </div>
+                            <h3>Chinelo Asuna 2.0</h3>
+                            <p>R$ 59,90</p>
+                            <a href="https://s.shopee.com.br/3Vh82LgOIn" target="_blank" class="buy-btn">COMPRAR</a>
+                        </div>
+                    </div>
+                    <button class="slider-btn next" onclick="moveSlider('chinelosSlider', 1)">❯</button>
+                </div>
+            </section>
+
+            </div><!-- fim content-main -->
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
