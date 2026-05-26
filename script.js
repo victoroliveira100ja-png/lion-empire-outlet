@@ -377,6 +377,8 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener('click', () => {
             menuItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
+            // Fecha sidebar no mobile após clicar num item
+            if (isMobile()) fecharSidebar();
             const label = item.textContent.trim();
             if (label.includes('Início')) {
                 clearSearch();

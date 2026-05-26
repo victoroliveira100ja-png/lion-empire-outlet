@@ -1078,30 +1078,51 @@ body::before {
     display: block;
 }
 
+
 /* ================= RESPONSIVO ================= */
+
+/*
+   ESTRATÉGIA MOBILE:
+   - Sidebar comporta-se IGUAL ao desktop (mesmo visual, 280px, mesmo toggle)
+   - No mobile ela fica como overlay (drawer) sobre o conteúdo
+   - Fecha/abre com o mesmo botão toggle interno
+   - Botão reopen aparece fixo no canto quando fechada
+   - Zoom bloqueado via viewport no HTML
+*/
+
 @media (max-width: 900px) {
-    /* Main ocupa tela toda — sidebar fica por cima como drawer */
+
+    /* Main ocupa tela toda — sidebar flutua por cima */
     .main {
         margin-left: 0 !important;
         width: 100% !important;
         padding: 20px 15px;
+        transition: none;
     }
 
-    /* Sidebar vira drawer: escondida por padrão via transform */
+    /* Sidebar: mesma aparência do desktop, mas como drawer overlay */
     .sidebar {
+        width: 280px;                        /* idêntica ao desktop */
         transform: translateX(-100%);
         transition: transform 0.35s ease;
-        left: 0 !important; /* anula o left:-280px do JS */
+        left: 0 !important;                  /* ignora o left:-280px do JS */
         visibility: visible !important;
-        z-index: 1000;
+        z-index: 1050;
+    }
+
+    /* Sidebar fechada via JS no desktop usa left:-280px — no mobile sobrescrevemos */
+    .sidebar.fechada {
+        left: 0 !important;
+        transform: translateX(-100%) !important;
+        visibility: visible !important;
     }
 
     /* Sidebar aberta */
     .sidebar.aberta {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
 
-    /* Reopen btn fica no topo esquerdo sempre visível */
+    /* Reopen btn sempre visível no mobile */
     .reopen-btn {
         display: flex !important;
         position: fixed;
@@ -1110,28 +1131,55 @@ body::before {
         z-index: 1200;
     }
 
-    /* Topo: espaço para o botão não cobrir a busca */
+    /* Espaço para o botão hamburger não cobrir a barra de busca */
     .topo {
-        padding-left: 55px;
+        padding-left: 58px;
+    }
+
+    /* Busca ocupa largura total */
+    .search-wrapper {
+        width: 100%;
     }
 
     .sessao-banners-categorias {
         flex-direction: column;
     }
+
     .banner-categoria {
-        height: 300px;
+        height: 260px;
+    }
+
+    /* Categorias ligeiramente menores */
+    .cat img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .categorias {
+        gap: 18px;
     }
 }
 
 @media (max-width: 600px) {
-    /* busca */
+
+    .main {
+        padding: 15px 12px;
+    }
+
+    /* Espaço para botão hamburger */
+    .topo {
+        padding-left: 55px;
+        margin-bottom: 20px;
+    }
+
+    /* Busca */
     .search-wrapper {
         width: 100%;
     }
 
     .topo input {
         font-size: 0.88rem;
-        padding: 14px 42px 14px 44px;
+        padding: 13px 42px 13px 44px;
     }
 
     .search-icon {
@@ -1141,7 +1189,6 @@ body::before {
 
     .search-dropdown {
         border-radius: 12px;
-        font-size: 0.88rem;
     }
 
     .dropdown-item {
@@ -1149,76 +1196,147 @@ body::before {
         font-size: 0.85rem;
     }
 
-    /* categorias */
-    .categorias-container {
-        gap: 20px;
-        margin-bottom: 40px;
+    /* Banner principal */
+    .banner {
+        margin-bottom: 20px;
+        border-radius: 14px;
     }
+
+    .banner img {
+        border-radius: 14px;
+    }
+
+    /* Categorias */
+    .categorias-container {
+        gap: 16px;
+        margin-bottom: 30px;
+    }
+
     .categorias {
-        gap: 15px;
+        gap: 12px;
         justify-content: center;
     }
+
     .cat img {
-        width: 75px;
-        height: 75px;
+        width: 68px;
+        height: 68px;
     }
+
     .cat p {
-        font-size: 0.68rem;
+        font-size: 0.65rem;
+        margin-top: 8px;
+        letter-spacing: 0.8px;
     }
+
     .titulo-categorias h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
-    /* cards */
+    /* Cards */
     .card {
-        min-width: 200px;
+        min-width: 170px;
+        padding: 14px;
+        border-radius: 16px;
     }
+
     .card-img-container {
-        height: 260px;
+        height: 210px;
     }
+
     .card h3 {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
+        height: 2.6rem;
     }
+
     .card p {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        margin: 6px 0;
     }
 
-    /* slider botões */
-    .slider-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
-    }
-    .slider-btn.prev { left: -8px; }
-    .slider-btn.next { right: -8px; }
-
-    /* títulos seções */
-    .produtos h2 {
-        font-size: 1.1rem;
+    .buy-btn {
+        padding: 10px;
+        font-size: 0.82rem;
+        border-radius: 10px;
     }
 
-    /* banners categorias */
-    .banner-categoria {
-        height: 220px;
-    }
-
-    /* banner principal */
-    .banner {
-        margin-bottom: 25px;
-    }
-
-    /* grid scroll */
+    /* Slider */
     .grid {
-        gap: 15px;
-        padding: 15px 5px;
+        gap: 12px;
+        padding: 12px 5px;
     }
 
-    /* banners pirâmide */
+    .slider-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .slider-btn.prev { left: -6px; }
+    .slider-btn.next { right: -6px; }
+
+    /* Títulos de seção */
+    .produtos h2 {
+        font-size: 1rem;
+        margin-bottom: 14px;
+    }
+
+    /* Banners categorias */
+    .sessao-banners-categorias {
+        flex-direction: column;
+    }
+
+    .banner-categoria {
+        height: 200px;
+    }
+
+    /* Banners pirâmide */
     .banner-piramide-topo .banner-piramide-item {
         width: 100%;
-        height: 220px;
+        height: 190px;
     }
+
     .banner-piramide-base .banner-piramide-item {
-        height: 160px;
+        height: 140px;
+    }
+
+    /* Grid de resultados de busca */
+    .search-results-grid {
+        gap: 14px;
+    }
+
+    .search-results-grid .card {
+        width: calc(50% - 7px);
+        min-width: 0;
+    }
+
+    .search-results-header h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Telas muito pequenas (ex: iPhone SE) */
+@media (max-width: 390px) {
+
+    .card {
+        min-width: 148px;
+        padding: 12px;
+    }
+
+    .card-img-container {
+        height: 185px;
+    }
+
+    .cat img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cat p {
+        font-size: 0.6rem;
+    }
+
+    .topo input {
+        font-size: 0.82rem;
+        padding: 12px 38px 12px 40px;
     }
 }
