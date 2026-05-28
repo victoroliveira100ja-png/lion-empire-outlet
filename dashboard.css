@@ -1107,27 +1107,27 @@ body::before {
 
     /* sidebar menor no mobile */
     .sidebar {
-        width: 210px;
+        width: 230px;
         padding: 70px 15px 35px;
     }
 
     .logo {
-        width: 190px;
+        width: 210px;
     }
 
     .menu li {
         padding: 15px 14px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         margin-bottom: 10px;
     }
 
     .main {
-        margin-left: 210px;
-        width: calc(100% - 210px);
+        margin-left: 230px;
+        width: calc(100% - 230px);
         padding: 20px 12px;
     }
 
-    /* categorias em grid organizado */
+    /* categorias em 2 linhas de 4 */
     .categorias-container {
         gap: 18px;
         margin-bottom: 35px;
@@ -1135,15 +1135,16 @@ body::before {
     .categorias {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
+        gap: 14px;
         justify-items: center;
     }
     .cat img {
-        width: 65px;
-        height: 65px;
+        width: 62px;
+        height: 62px;
     }
     .cat p {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
+        text-align: center;
     }
     .titulo-categorias h2 {
         font-size: 1.1rem;
