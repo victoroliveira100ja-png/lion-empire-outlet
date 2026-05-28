@@ -87,7 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         'calcas':   { must: ['calca', 'cargo', 'denim', 'desgastado'], exclude: ['bermuda', 'short', 'conjunto', 'kit'] },
         'bones':    { must: ['bone', 'bones', 'beisebol'], exclude: ['conjunto', 'kit'] },
-        'time':     { must: ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'internacional', 'cruzeiro', 'torcedor', 'jogador'], exclude: [] },
+        'time':     { must: ['torcedor', 'jogador'], exclude: [] },
+        'sao paulo': { must: ['sao paulo'], exclude: [] },
+        'corinthians': { must: ['corinthians'], exclude: [] },
+        'palmeiras': { must: ['palmeiras'], exclude: [] },
+        'santos':   { must: ['santos'], exclude: [] },
+        'atletico': { must: ['atletico'], exclude: [] },
+        'flamengo': { must: ['flamengo'], exclude: [] },
+        'botafogo': { must: ['botafogo'], exclude: [] },
+        'vasco':    { must: ['vasco'], exclude: [] },
+        'fluminense': { must: ['fluminense'], exclude: [] },
+        'gremio':   { must: ['gremio'], exclude: [] },
         'premium':  { must: ['premium', 'camisa', 'camiseta'], exclude: ['conjunto', 'kit', 'tenis', 'moletom', 'torcedor', 'jogador', 'corinthians', 'palmeiras', 'flamengo', 'santos', 'botafogo', 'vasco', 'atletico', 'sao paulo', 'fluminense', 'gremio'] },
         'relogios': { must: ['relogio', 'digital'], exclude: ['tenis', 'teni', 'calcado'] },
         'moletom':  { must: ['moletom', 'moleton', 'fleece'], exclude: ['kit', 'conjunto'] },
@@ -138,7 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (cat) {
             const { must, exclude } = categories[cat];
             if (cat === 'camisa' || cat === 'premium') {
-                const isTimeShirt = categories['time'].must.some(w => normTitle.includes(w));
+                const timeTeams = ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'torcedor', 'jogador'];
+                const isTimeShirt = timeTeams.some(w => normTitle.includes(w));
                 if (isTimeShirt) return false;
             }
             const hasRequired = must.some(w => normTitle.includes(w));
