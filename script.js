@@ -130,14 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!normQuery) return false;
 
-        // 1) Busca direta: titulo contem exatamente o que foi digitado
-        if (normTitle.includes(normQuery)) return true;
-
-        // 2) Prefixo em qualquer palavra do titulo (ex: "cam" bate em "camisa")
         const titleWords = normTitle.split(' ');
-        if (normQuery.length >= 2 && titleWords.some(w => w.startsWith(normQuery))) return true;
+        const queryWords = normQuery.split(' ').filter(w => w.length >= 1);
 
-        // 3) Detecta categoria pelo que foi digitado (ex: "cami" -> categoria camisa)
+        // 1) Detecta categoria — tem prioridade sobre busca livre
         const cat = getCategoryForQuery(normQuery);
         if (cat) {
             const { must, exclude } = categories[cat];
@@ -150,12 +146,17 @@ document.addEventListener("DOMContentLoaded", () => {
             return hasRequired && !hasExcluded;
         }
 
-        // 4) Cada palavra da query como prefixo ou substring no titulo
-        const queryWords = normQuery.split(' ').filter(w => w.length >= 1);
+        // 2) Query com múltiplas palavras: todas devem bater no título
         if (queryWords.length > 1) {
             return queryWords.every(qw =>
                 normTitle.includes(qw) || titleWords.some(tw => tw.startsWith(qw))
             );
+        }
+
+        // 3) Query de 1 palavra: só bate se for palavra exata ou prefixo (mín. 3 letras)
+        if (normQuery.length >= 2) {
+            if (titleWords.includes(normQuery)) return true;
+            if (normQuery.length >= 3 && titleWords.some(w => w.startsWith(normQuery))) return true;
         }
 
         return false;
