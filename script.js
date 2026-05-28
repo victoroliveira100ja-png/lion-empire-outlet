@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Categorias precisas com exclusões
     const categories = {
         'tenis':    { must: ['tenis', 'teni', 'asics', 'damando', 'repplay', 'fitt shoes', 'raiden'], exclude: ['relogio', 'digital', 'kit', 'conjunto'] },
-        'shorts':   { must: ['short', 'bermuda'], exclude: ['conjunto', 'kit', 'camiseta', 'camisa', 'calca'] },
+        'shorts':   { must: ['short', 'bermuda'], exclude: ['conjunto', 'camiseta', 'camisa', 'calca'] },
 
         'calcas':   { must: ['calca', 'cargo', 'denim', 'desgastado'], exclude: ['bermuda', 'short', 'conjunto', 'kit'] },
         'bones':    { must: ['bone', 'bones', 'beisebol'], exclude: ['conjunto', 'kit'] },
