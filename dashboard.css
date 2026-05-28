@@ -1107,80 +1107,80 @@ body::before {
 
     /* sidebar menor no mobile */
     .sidebar {
-        width: 170px;
-        padding: 60px 10px 30px;
+        width: 210px;
+        padding: 70px 15px 35px;
     }
 
     .logo {
-        width: 150px;
+        width: 190px;
     }
 
     .menu li {
-        padding: 12px 10px;
-        font-size: 0.78rem;
-        margin-bottom: 8px;
+        padding: 15px 14px;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
     }
 
     .main {
-        margin-left: 170px;
-        width: calc(100% - 170px);
-        padding: 15px 10px;
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 20px 12px;
     }
 
     /* categorias em grid organizado */
     .categorias-container {
-        gap: 15px;
-        margin-bottom: 30px;
+        gap: 18px;
+        margin-bottom: 35px;
     }
     .categorias {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+        gap: 12px;
         justify-items: center;
     }
     .cat img {
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
     }
     .cat p {
-        font-size: 0.58rem;
+        font-size: 0.65rem;
     }
     .titulo-categorias h2 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     /* cards — 2 visíveis por vez */
     .card {
-        min-width: calc(45vw - 90px);
-        max-width: calc(45vw - 90px);
+        min-width: calc(50vw - 115px);
+        max-width: calc(50vw - 115px);
     }
     .card-img-container {
-        height: 180px;
+        height: 220px;
     }
     .card h3 {
-        font-size: 0.75rem;
-        height: 2.5rem;
+        font-size: 0.85rem;
+        height: 2.8rem;
     }
     .card p {
-        font-size: 0.95rem;
+        font-size: 1.05rem;
     }
     .buy-btn {
-        padding: 9px;
-        font-size: 0.75rem;
+        padding: 11px;
+        font-size: 0.82rem;
     }
 
     /* slider botões */
     .slider-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 0.7rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
     }
-    .slider-btn.prev { left: -5px; }
-    .slider-btn.next { right: -5px; }
+    .slider-btn.prev { left: -6px; }
+    .slider-btn.next { right: -6px; }
 
     /* títulos seções */
     .produtos h2 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     /* banners categorias */
