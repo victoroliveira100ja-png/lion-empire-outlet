@@ -1,31 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // ================= SIDEBAR =================
-    const isMobile = () => window.innerWidth <= 900;
-
-    // Cria overlay dinamicamente
-    const overlay = document.createElement('div');
-    overlay.className = 'sidebar-overlay';
-    overlay.id = 'sidebarOverlay';
-    document.body.appendChild(overlay);
-
-    overlay.addEventListener('click', () => fecharSidebar());
 
     function abrirSidebar() {
         const sidebar = document.getElementById('sidebar');
         const main = document.getElementById('mainContent');
         const reopenBtn = document.getElementById('reopenBtn');
 
-        if (isMobile()) {
-            sidebar.classList.add('aberta');
-            sidebar.classList.remove('fechada');
-            overlay.classList.add('active');
-            reopenBtn.style.display = 'none';
-        } else {
-            sidebar.classList.remove('fechada');
-            main.classList.remove('cheia');
-            reopenBtn.style.display = 'none';
-        }
+        sidebar.classList.remove('fechada');
+        main.classList.remove('cheia');
+        reopenBtn.style.display = 'none';
     }
 
     function fecharSidebar() {
@@ -33,41 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const main = document.getElementById('mainContent');
         const reopenBtn = document.getElementById('reopenBtn');
 
-        if (isMobile()) {
-            sidebar.classList.remove('aberta');
-            overlay.classList.remove('active');
-            reopenBtn.style.display = 'flex';
-        } else {
-            sidebar.classList.add('fechada');
-            main.classList.add('cheia');
-            reopenBtn.style.display = 'flex';
-        }
+        sidebar.classList.add('fechada');
+        main.classList.add('cheia');
+        reopenBtn.style.display = 'flex';
     }
 
     window.toggleSidebar = function() {
         const sidebar = document.getElementById('sidebar');
-        if (isMobile()) {
-            sidebar.classList.contains('aberta') ? fecharSidebar() : abrirSidebar();
-        } else {
-            sidebar.classList.contains('fechada') ? abrirSidebar() : fecharSidebar();
-        }
+        sidebar.classList.contains('fechada') ? abrirSidebar() : fecharSidebar();
     };
 
-    // Estado inicial por tamanho de tela
+    // Estado inicial: sidebar sempre aberta
     (function initSidebar() {
         const sidebar = document.getElementById('sidebar');
         const main = document.getElementById('mainContent');
         const reopenBtn = document.getElementById('reopenBtn');
-        if (isMobile()) {
-            // Mobile: sidebar fechada por padrão, reopen visível
-            sidebar.classList.remove('aberta');
-            reopenBtn.style.display = 'flex';
-        } else {
-            // Desktop: sidebar aberta por padrão
-            sidebar.classList.remove('fechada');
-            main.classList.remove('cheia');
-            reopenBtn.style.display = 'none';
-        }
+        sidebar.classList.remove('fechada');
+        main.classList.remove('cheia');
+        reopenBtn.style.display = 'none';
     })();
 
     // ================= SLIDER INFINITO =================
@@ -377,8 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener('click', () => {
             menuItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
-            // Fecha sidebar no mobile após clicar num item
-            if (isMobile()) fecharSidebar();
             const label = item.textContent.trim();
             if (label.includes('Início')) {
                 clearSearch();
