@@ -130,14 +130,20 @@ document.addEventListener("DOMContentLoaded", () => {
     function getCategoryForQuery(query) {
         const norm = normalize(query);
 
-        // Primeiro verifica se é um time específico
+        // 1) Verifica se é um time específico
         for (const team of teamCategories) {
             if (norm.includes(team)) return team;
         }
 
-        // Depois verifica as demais categorias
+        // 2) Verifica se contém "time", "torcedor" ou "jogador" — retorna categoria time
+        if (norm.includes('time') || norm.includes('torcedor') || norm.includes('jogador')) {
+            return 'time';
+        }
+
+        // 3) Depois verifica as demais categorias
         for (const [cat, { must }] of Object.entries(categories)) {
-            if (teamCategories.includes(cat)) continue; // já verificou acima
+            if (teamCategories.includes(cat)) continue;
+            if (cat === 'time') continue;
             if (must.some(w => norm.includes(w)) || norm === cat) {
                 return cat;
             }
