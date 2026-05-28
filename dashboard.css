@@ -1160,6 +1160,32 @@ body::before {
         min-width: 260px;
         max-width: 260px;
     }
+
+    /* página de resultados no mobile */
+    .search-results-page {
+        padding-top: 10px;
+    }
+
+    .search-results-back {
+        position: relative;
+        z-index: 600;
+        pointer-events: all;
+    }
+
+    /* cards nos resultados de busca — 2 por linha */
+    .search-results-grid {
+        gap: 12px;
+    }
+
+    .search-results-grid .card {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: calc(50% - 6px) !important;
+    }
+
+    .search-results-grid .card-img-container {
+        height: 200px !important;
+    }
     .card-img-container {
         height: 280px;
     }
