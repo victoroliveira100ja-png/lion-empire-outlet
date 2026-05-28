@@ -1151,18 +1151,18 @@ body::before {
 
     /* cards — 2 visíveis por vez */
     .card {
-        min-width: calc(50vw - 95px);
-        max-width: calc(50vw - 95px);
+        min-width: 260px;
+        max-width: 260px;
     }
     .card-img-container {
-        height: 260px;
+        height: 280px;
     }
     .card h3 {
-        font-size: 0.9rem;
+        font-size: 0.92rem;
         height: 3rem;
     }
     .card p {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
     .buy-btn {
         padding: 12px;
