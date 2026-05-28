@@ -1105,52 +1105,82 @@ body::before {
         font-size: 0.85rem;
     }
 
-    /* categorias */
-    .categorias-container {
-        gap: 20px;
-        margin-bottom: 40px;
-    }
-    .categorias {
-        gap: 15px;
-        justify-content: center;
-    }
-    .cat img {
-        width: 75px;
-        height: 75px;
-    }
-    .cat p {
-        font-size: 0.68rem;
-    }
-    .titulo-categorias h2 {
-        font-size: 1.1rem;
+    /* sidebar menor no mobile */
+    .sidebar {
+        width: 170px;
+        padding: 60px 10px 30px;
     }
 
-    /* cards */
+    .logo {
+        width: 150px;
+    }
+
+    .menu li {
+        padding: 12px 10px;
+        font-size: 0.78rem;
+        margin-bottom: 8px;
+    }
+
+    .main {
+        margin-left: 170px;
+        width: calc(100% - 170px);
+        padding: 15px 10px;
+    }
+
+    /* categorias em grid organizado */
+    .categorias-container {
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .categorias {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        justify-items: center;
+    }
+    .cat img {
+        width: 55px;
+        height: 55px;
+    }
+    .cat p {
+        font-size: 0.58rem;
+    }
+    .titulo-categorias h2 {
+        font-size: 1rem;
+    }
+
+    /* cards — 2 visíveis por vez */
     .card {
-        min-width: 200px;
+        min-width: calc(45vw - 90px);
+        max-width: calc(45vw - 90px);
     }
     .card-img-container {
-        height: 260px;
+        height: 180px;
     }
     .card h3 {
-        font-size: 0.88rem;
+        font-size: 0.75rem;
+        height: 2.5rem;
     }
     .card p {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
+    }
+    .buy-btn {
+        padding: 9px;
+        font-size: 0.75rem;
     }
 
     /* slider botões */
     .slider-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
     }
-    .slider-btn.prev { left: -8px; }
-    .slider-btn.next { right: -8px; }
+    .slider-btn.prev { left: -5px; }
+    .slider-btn.next { right: -5px; }
 
     /* títulos seções */
     .produtos h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     /* banners categorias */
@@ -1165,8 +1195,8 @@ body::before {
 
     /* grid scroll */
     .grid {
-        gap: 15px;
-        padding: 15px 5px;
+        gap: 10px;
+        padding: 12px 3px;
     }
 
     /* banners pirâmide */
