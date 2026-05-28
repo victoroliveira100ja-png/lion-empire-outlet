@@ -1127,7 +1127,7 @@ body::before {
         padding: 20px 12px;
     }
 
-    /* categorias em 2 linhas de 4 */
+    /* categorias em 2 linhas de 4, última linha centralizada */
     .categorias-container {
         gap: 18px;
         margin-bottom: 35px;
@@ -1138,6 +1138,9 @@ body::before {
         gap: 14px;
         justify-items: center;
     }
+    .cat:nth-child(5) { grid-column: 1; }
+    .cat:nth-child(6) { grid-column: 2; }
+    .cat:nth-child(7) { grid-column: 3; }
     .cat img {
         width: 62px;
         height: 62px;
@@ -1148,6 +1151,12 @@ body::before {
     }
     .titulo-categorias h2 {
         font-size: 1.1rem;
+    }
+
+    /* redes sociais mais acima */
+    .social {
+        margin-top: auto;
+        margin-bottom: 30px;
     }
 
     /* cards — 2 visíveis por vez */
