@@ -124,9 +124,20 @@ document.addEventListener("DOMContentLoaded", () => {
         'Chinelos':    'chinelo',
     };
 
+    // Times têm prioridade máxima na busca
+    const teamCategories = ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio'];
+
     function getCategoryForQuery(query) {
         const norm = normalize(query);
+
+        // Primeiro verifica se é um time específico
+        for (const team of teamCategories) {
+            if (norm.includes(team)) return team;
+        }
+
+        // Depois verifica as demais categorias
         for (const [cat, { must }] of Object.entries(categories)) {
+            if (teamCategories.includes(cat)) continue; // já verificou acima
             if (must.some(w => norm.includes(w)) || norm === cat) {
                 return cat;
             }
