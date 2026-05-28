@@ -1151,22 +1151,22 @@ body::before {
 
     /* cards — 2 visíveis por vez */
     .card {
-        min-width: calc(50vw - 115px);
-        max-width: calc(50vw - 115px);
+        min-width: calc(50vw - 95px);
+        max-width: calc(50vw - 95px);
     }
     .card-img-container {
-        height: 220px;
+        height: 260px;
     }
     .card h3 {
-        font-size: 0.85rem;
-        height: 2.8rem;
+        font-size: 0.9rem;
+        height: 3rem;
     }
     .card p {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
     }
     .buy-btn {
-        padding: 11px;
-        font-size: 0.82rem;
+        padding: 12px;
+        font-size: 0.85rem;
     }
 
     /* slider botões */
