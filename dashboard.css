@@ -999,6 +999,8 @@ body::before {
 @media (max-width: 600px) {
     .search-results-grid .card {
         width: calc(50% - 10px);
+        min-width: 0 !important;
+        max-width: 100% !important;
     }
 }
 

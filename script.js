@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
         searchDropdown.classList.remove('active');
         document.getElementById('searchResultsPage').classList.remove('active');
         document.getElementById('contentMain').classList.remove('hidden');
-        searchInput.focus();
+        if (window.innerWidth > 900) searchInput.focus();
     };
 
     // ================= BANNERS =================
