@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         'premium':  { must: ['premium', 'camisa', 'camiseta'], exclude: ['conjunto', 'kit', 'tenis', 'moletom', 'torcedor', 'jogador', 'corinthians', 'palmeiras', 'flamengo', 'santos', 'botafogo', 'vasco', 'atletico', 'sao paulo', 'fluminense', 'gremio'] },
         'relogios': { must: ['relogio', 'digital'], exclude: ['tenis', 'teni', 'calcado'] },
         'moletom':  { must: ['moletom', 'moleton', 'fleece'], exclude: ['kit', 'conjunto'] },
-        'camisa':   { must: ['camisa', 'camiseta'], exclude: ['torcedor', 'jogador', 'corinthians', 'palmeiras', 'flamengo', 'santos fc', 'botafogo', 'vasco', 'atletico', 'sao paulo fc', 'fluminense', 'gremio', 'conjunto', 'kit', 'moletom', '25/26', '24/25', '23/24'] },
+        'camisa':   { must: ['camisa', 'camiseta'], exclude: ['conjunto', 'kit', 'moletom'] },
         'jaqueta':  { must: ['jaqueta', 'casaco'], exclude: ['conjunto', 'kit'] },
         'kit':      { must: ['kit'], exclude: [] },
         'conjunto': { must: ['conjunto'], exclude: ['moletom'] },
@@ -158,11 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const cat = getCategoryForQuery(normQuery);
         if (cat) {
             const { must, exclude } = categories[cat];
-            if (cat === 'camisa' || cat === 'premium') {
-                const timeTeams = ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'torcedor', 'jogador'];
-                const isTimeShirt = timeTeams.some(w => normTitle.includes(w));
-                if (isTimeShirt) return false;
-            }
             const hasRequired = must.some(w => normTitle.includes(w));
             const hasExcluded = exclude.some(w => normTitle.includes(w));
             return hasRequired && !hasExcluded;
@@ -194,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const normQuery = normalize(query);
         const cat = getCategoryForQuery(normQuery);
-        const isCamisaFilter = cat === 'camisa' || cat === 'premium';
         const isBonesFilter = cat === 'bones' || normQuery === 'bones' || normQuery === 'bonés';
         const isSectionFilter = {
             'acessorio': 'sec-acessorios',
@@ -209,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const title = c.querySelector('h3').textContent.trim();
             const section = c.closest('section');
 
-            if (isCamisaFilter && section && section.id === 'sec-times') return;
 
             if (isBonesFilter) {
                 if (!section || section.id !== 'sec-bones') return;
