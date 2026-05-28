@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         'calcas':   { must: ['calca', 'cargo', 'denim', 'desgastado'], exclude: ['bermuda', 'short', 'conjunto', 'kit'] },
         'bones':    { must: ['bone', 'bones', 'beisebol'], exclude: ['conjunto', 'kit'] },
-        'time':     { must: ['torcedor', 'jogador'], exclude: [] },
+        'time':     { must: ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'torcedor', 'jogador'], exclude: [] },
         'sao paulo': { must: ['sao paulo'], exclude: [] },
         'corinthians': { must: ['corinthians'], exclude: [] },
         'palmeiras': { must: ['palmeiras'], exclude: [] },
