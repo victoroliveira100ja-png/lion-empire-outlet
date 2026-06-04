@@ -1192,10 +1192,10 @@ body::before {
     }
 
     .search-results-grid .card-img-container {
-        height: 200px !important;
+        height: 180px !important;
     }
     .card-img-container {
-        height: 280px;
+        height: 220px;
     }
     .card h3 {
         font-size: 0.92rem;
