@@ -1075,6 +1075,9 @@ body::before {
     .sessao-banners-categorias {
         flex-direction: column;
     }
+    .sessao-banners-categorias .banner-categoria:only-child {
+        max-width: 100% !important;
+    }
     .banner-categoria {
         height: 300px;
     }
