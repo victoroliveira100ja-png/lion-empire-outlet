@@ -831,6 +831,7 @@ body::before {
     gap: 20px;
     padding: 30px 0;
     width: 100%;
+    justify-content: center;
 }
 
 .sessao-banners-categorias .banner-categoria:only-child {
