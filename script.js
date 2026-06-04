@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         'calcas':   { must: ['calca', 'cargo', 'denim', 'desgastado'], exclude: ['bermuda', 'short', 'conjunto', 'kit'] },
         'bones':    { must: ['bone', 'bones', 'beisebol'], exclude: ['conjunto', 'kit'] },
         'time':     { must: ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'torcedor', 'jogador'], exclude: [] },
+        'selecao':  { must: ['selecao', 'seleção', 'brasil', 'argentina', 'alemanha', 'italia', 'espanha', 'portugal', 'mexico', 'belgica'], exclude: [] },
         'sao paulo': { must: ['sao paulo'], exclude: [] },
         'corinthians': { must: ['corinthians'], exclude: [] },
         'palmeiras': { must: ['palmeiras'], exclude: [] },
@@ -122,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         'Acessórios':  'acessorio',
         'Perfumes':    'perfume',
         'Chinelos':    'chinelo',
+        'Seleções':    'selecao',
     };
 
     // Times têm prioridade máxima na busca
@@ -200,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'acessorio': 'sec-acessorios',
             'perfume': 'sec-perfumes',
             'chinelo': 'sec-chinelos',
+            'relogios': 'sec-relogios',
         }[cat];
 
         const seen = new Set();
