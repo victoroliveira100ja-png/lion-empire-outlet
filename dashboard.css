@@ -833,6 +833,10 @@ body::before {
     width: 100%;
 }
 
+.sessao-banners-categorias .banner-categoria:only-child {
+    max-width: calc(50% - 10px);
+}
+
 .banner-categoria {
     flex: 1;
     position: relative;
