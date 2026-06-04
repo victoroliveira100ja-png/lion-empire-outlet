@@ -88,7 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
         'calcas':   { must: ['calca', 'cargo', 'denim', 'desgastado'], exclude: ['bermuda', 'short', 'conjunto', 'kit'] },
         'bones':    { must: ['bone', 'bones', 'beisebol'], exclude: ['conjunto', 'kit'] },
         'time':     { must: ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'torcedor', 'jogador'], exclude: [] },
-        'selecao':  { must: ['selecao', 'seleção', 'brasil', 'argentina', 'alemanha', 'italia', 'espanha', 'portugal', 'mexico', 'belgica'], exclude: [] },
+        'selecao':  { must: ['selecao', 'seleção'], exclude: [] },
+        'brasil':   { must: ['brasil'], exclude: [] },
+        'argentina': { must: ['argentina'], exclude: [] },
+        'alemanha': { must: ['alemanha'], exclude: [] },
+        'italia':   { must: ['italia'], exclude: [] },
+        'espanha':  { must: ['espanha'], exclude: [] },
+        'portugal': { must: ['portugal'], exclude: [] },
+        'mexico':   { must: ['mexico'], exclude: [] },
+        'belgica':  { must: ['belgica'], exclude: [] },
         'sao paulo': { must: ['sao paulo'], exclude: [] },
         'corinthians': { must: ['corinthians'], exclude: [] },
         'palmeiras': { must: ['palmeiras'], exclude: [] },
@@ -128,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Times têm prioridade máxima na busca
     const teamCategories = ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio'];
+    const selecaoCategories = ['brasil', 'argentina', 'alemanha', 'italia', 'espanha', 'portugal', 'mexico', 'belgica'];
 
     function getCategoryForQuery(query) {
         const norm = normalize(query);
@@ -137,15 +146,26 @@ document.addEventListener("DOMContentLoaded", () => {
             if (norm.includes(team)) return team;
         }
 
-        // 2) Verifica se contém "time", "torcedor" ou "jogador" — retorna categoria time
+        // 2) Verifica se é uma seleção específica
+        for (const sel of selecaoCategories) {
+            if (norm.includes(sel)) return sel;
+        }
+
+        // 3) Verifica se contém "time", "torcedor" ou "jogador" — retorna categoria time
         if (norm.includes('time') || norm.includes('torcedor') || norm.includes('jogador')) {
             return 'time';
         }
 
-        // 3) Depois verifica as demais categorias
+        // 4) Verifica se contém "selecao" ou "seleção"
+        if (norm.includes('selecao') || norm.includes('seleção')) {
+            return 'selecao';
+        }
+
+        // 5) Depois verifica as demais categorias
         for (const [cat, { must }] of Object.entries(categories)) {
             if (teamCategories.includes(cat)) continue;
-            if (cat === 'time') continue;
+            if (selecaoCategories.includes(cat)) continue;
+            if (cat === 'time' || cat === 'selecao') continue;
             if (must.some(w => norm.includes(w)) || norm === cat) {
                 return cat;
             }
