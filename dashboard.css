@@ -1333,4 +1333,32 @@ body::before {
     .sidebar.aberta {
         left: 0;
     }
+}/* =====================================================
+   FIX CARDS ESPORTIVOS MOBILE — adicionar ao FINAL do dashboard.css
+   ===================================================== */
+
+@media (max-width: 900px) {
+    #esportivoSlider .card-img-container,
+    #esportivoSlider .card-img-container.tenis-fit,
+    #esportivoSlider .card-img-container.tenis {
+        height: 220px;
+    }
+
+    #esportivoSlider .card {
+        min-width: 260px;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    #esportivoSlider .card-img-container,
+    #esportivoSlider .card-img-container.tenis-fit,
+    #esportivoSlider .card-img-container.tenis {
+        height: 220px;
+    }
+
+    #esportivoSlider .card {
+        min-width: 260px;
+        max-width: 260px;
+    }
 }
