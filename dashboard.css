@@ -1285,4 +1285,52 @@ body::before {
 /* 5. Imagens de categorias — reserva espaço circular antes de carregar */
 .cat img {
     background: rgba(255,255,255,0.05);
+}/* =====================================================
+   MOBILE FIX — adicionar ao FINAL do dashboard.css
+   (substitui o bloco .sidebar-overlay que estava com display:none !important)
+   ===================================================== */
+
+/* Overlay mobile — reativado */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    /* Sidebar fica escondida fora da tela por padrão no mobile */
+    .sidebar {
+        left: -280px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    /* Quando aberta, desliza para dentro */
+    .sidebar.aberta {
+        left: 0;
+    }
+
+    /* Conteúdo principal ocupa tela toda no mobile */
+    .main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        left: -230px;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.aberta {
+        left: 0;
+    }
 }
