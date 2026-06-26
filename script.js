@@ -1,15 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ================= LAZY LOAD VIA INTERSECTION OBSERVER =================
+    // Imagens com loading="lazy" nativas já ajudam, mas o Observer garante
+    // que imagens dentro de sliders com overflow:hidden sejam carregadas certo.
+    if ('IntersectionObserver' in window) {
+        const imgObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    obs.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px' });
+
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            // Só aplica observer se a imagem ainda não começou a carregar
+            if (!img.complete) {
+                imgObserver.observe(img);
+            }
+        });
+    }
+
     // ================= SIDEBAR =================
+    const isMobile = () => window.innerWidth <= 900;
+
+    // Cria overlay dinamicamente
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    overlay.id = 'sidebarOverlay';
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener('click', () => fecharSidebar());
 
     function abrirSidebar() {
         const sidebar = document.getElementById('sidebar');
         const main = document.getElementById('mainContent');
         const reopenBtn = document.getElementById('reopenBtn');
 
-        sidebar.classList.remove('fechada');
-        main.classList.remove('cheia');
-        reopenBtn.style.display = 'none';
+        if (isMobile()) {
+            sidebar.classList.add('aberta');
+            sidebar.classList.remove('fechada');
+            overlay.classList.add('active');
+            reopenBtn.style.display = 'none';
+        } else {
+            sidebar.classList.remove('fechada');
+            main.classList.remove('cheia');
+            reopenBtn.style.display = 'none';
+        }
     }
 
     function fecharSidebar() {
@@ -17,24 +58,41 @@ document.addEventListener("DOMContentLoaded", () => {
         const main = document.getElementById('mainContent');
         const reopenBtn = document.getElementById('reopenBtn');
 
-        sidebar.classList.add('fechada');
-        main.classList.add('cheia');
-        reopenBtn.style.display = 'flex';
+        if (isMobile()) {
+            sidebar.classList.remove('aberta');
+            overlay.classList.remove('active');
+            reopenBtn.style.display = 'flex';
+        } else {
+            sidebar.classList.add('fechada');
+            main.classList.add('cheia');
+            reopenBtn.style.display = 'flex';
+        }
     }
 
     window.toggleSidebar = function() {
         const sidebar = document.getElementById('sidebar');
-        sidebar.classList.contains('fechada') ? abrirSidebar() : fecharSidebar();
+        if (isMobile()) {
+            sidebar.classList.contains('aberta') ? fecharSidebar() : abrirSidebar();
+        } else {
+            sidebar.classList.contains('fechada') ? abrirSidebar() : fecharSidebar();
+        }
     };
 
-    // Estado inicial: sidebar sempre aberta
+    // Estado inicial por tamanho de tela
     (function initSidebar() {
         const sidebar = document.getElementById('sidebar');
         const main = document.getElementById('mainContent');
         const reopenBtn = document.getElementById('reopenBtn');
-        sidebar.classList.remove('fechada');
-        main.classList.remove('cheia');
-        reopenBtn.style.display = 'none';
+        if (isMobile()) {
+            // Mobile: sidebar fechada por padrão, reopen visível
+            sidebar.classList.remove('aberta');
+            reopenBtn.style.display = 'flex';
+        } else {
+            // Desktop: sidebar aberta por padrão
+            sidebar.classList.remove('fechada');
+            main.classList.remove('cheia');
+            reopenBtn.style.display = 'none';
+        }
     })();
 
     // ================= SLIDER INFINITO =================
@@ -46,6 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
             cards.forEach(card => {
                 const clone = card.cloneNode(true);
                 clone.setAttribute('aria-hidden', 'true');
+                // Garante lazy loading nas imagens dos clones
+                clone.querySelectorAll('img').forEach(img => {
+                    if (!img.hasAttribute('loading')) {
+                        img.setAttribute('loading', 'lazy');
+                    }
+                });
                 slider.appendChild(clone);
             });
             slider.scrollLeft = 0;
@@ -83,34 +147,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Categorias precisas com exclusões
     const categories = {
         'tenis':    { must: ['tenis', 'teni', 'asics', 'damando', 'repplay', 'fitt shoes', 'raiden'], exclude: ['relogio', 'digital', 'kit', 'conjunto'] },
-        'shorts':   { must: ['short', 'bermuda'], exclude: ['conjunto', 'camiseta', 'camisa', 'calca'] },
+        'shorts':   { must: ['short', 'bermuda'], exclude: ['conjunto', 'kit', 'camiseta', 'camisa', 'calca'] },
 
         'calcas':   { must: ['calca', 'cargo', 'denim', 'desgastado'], exclude: ['bermuda', 'short', 'conjunto', 'kit'] },
         'bones':    { must: ['bone', 'bones', 'beisebol'], exclude: ['conjunto', 'kit'] },
-        'time':     { must: ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'torcedor', 'jogador'], exclude: [] },
-        'selecao':  { must: ['selecao', 'seleção'], exclude: [] },
-        'brasil':   { must: ['brasil'], exclude: [] },
-        'argentina': { must: ['argentina'], exclude: [] },
-        'alemanha': { must: ['alemanha'], exclude: [] },
-        'italia':   { must: ['italia'], exclude: [] },
-        'espanha':  { must: ['espanha'], exclude: [] },
-        'portugal': { must: ['portugal'], exclude: [] },
-        'mexico':   { must: ['mexico'], exclude: [] },
-        'belgica':  { must: ['belgica'], exclude: [] },
-        'sao paulo': { must: ['sao paulo'], exclude: [] },
-        'corinthians': { must: ['corinthians'], exclude: [] },
-        'palmeiras': { must: ['palmeiras'], exclude: [] },
-        'santos':   { must: ['santos'], exclude: [] },
-        'atletico': { must: ['atletico'], exclude: [] },
-        'flamengo': { must: ['flamengo'], exclude: [] },
-        'botafogo': { must: ['botafogo'], exclude: [] },
-        'vasco':    { must: ['vasco'], exclude: [] },
-        'fluminense': { must: ['fluminense'], exclude: [] },
-        'gremio':   { must: ['gremio'], exclude: [] },
+        'time':     { must: ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio', 'internacional', 'cruzeiro', 'torcedor', 'jogador'], exclude: [] },
         'premium':  { must: ['premium', 'camisa', 'camiseta'], exclude: ['conjunto', 'kit', 'tenis', 'moletom', 'torcedor', 'jogador', 'corinthians', 'palmeiras', 'flamengo', 'santos', 'botafogo', 'vasco', 'atletico', 'sao paulo', 'fluminense', 'gremio'] },
         'relogios': { must: ['relogio', 'digital'], exclude: ['tenis', 'teni', 'calcado'] },
         'moletom':  { must: ['moletom', 'moleton', 'fleece'], exclude: ['kit', 'conjunto'] },
-        'camisa':   { must: ['camisa', 'camiseta'], exclude: ['conjunto', 'kit', 'moletom'] },
+        'camisa':   { must: ['camisa', 'camiseta'], exclude: ['torcedor', 'jogador', 'corinthians', 'palmeiras', 'flamengo', 'santos fc', 'botafogo', 'vasco', 'atletico', 'sao paulo fc', 'fluminense', 'gremio', 'conjunto', 'kit', 'moletom', '25/26', '24/25', '23/24'] },
         'jaqueta':  { must: ['jaqueta', 'casaco'], exclude: ['conjunto', 'kit'] },
         'kit':      { must: ['kit'], exclude: [] },
         'conjunto': { must: ['conjunto'], exclude: ['moletom'] },
@@ -131,41 +176,11 @@ document.addEventListener("DOMContentLoaded", () => {
         'Acessórios':  'acessorio',
         'Perfumes':    'perfume',
         'Chinelos':    'chinelo',
-        'Seleções':    'selecao',
     };
-
-    // Times têm prioridade máxima na busca
-    const teamCategories = ['sao paulo', 'corinthians', 'palmeiras', 'santos', 'atletico', 'flamengo', 'botafogo', 'vasco', 'fluminense', 'gremio'];
-    const selecaoCategories = ['brasil', 'argentina', 'alemanha', 'italia', 'espanha', 'portugal', 'mexico', 'belgica'];
 
     function getCategoryForQuery(query) {
         const norm = normalize(query);
-
-        // 1) Verifica se é um time específico
-        for (const team of teamCategories) {
-            if (norm.includes(team)) return team;
-        }
-
-        // 2) Verifica se é uma seleção específica
-        for (const sel of selecaoCategories) {
-            if (norm.includes(sel)) return sel;
-        }
-
-        // 3) Verifica se contém "time", "torcedor" ou "jogador" — retorna categoria time
-        if (norm.includes('time') || norm.includes('torcedor') || norm.includes('jogador')) {
-            return 'time';
-        }
-
-        // 4) Verifica se contém "selecao" ou "seleção"
-        if (norm.includes('selecao') || norm.includes('seleção')) {
-            return 'selecao';
-        }
-
-        // 5) Depois verifica as demais categorias
         for (const [cat, { must }] of Object.entries(categories)) {
-            if (teamCategories.includes(cat)) continue;
-            if (selecaoCategories.includes(cat)) continue;
-            if (cat === 'time' || cat === 'selecao') continue;
             if (must.some(w => norm.includes(w)) || norm === cat) {
                 return cat;
             }
@@ -179,29 +194,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!normQuery) return false;
 
-        const titleWords = normTitle.split(' ');
-        const queryWords = normQuery.split(' ').filter(w => w.length >= 1);
+        // 1) Busca direta: titulo contem exatamente o que foi digitado
+        if (normTitle.includes(normQuery)) return true;
 
-        // 1) Detecta categoria — tem prioridade sobre busca livre
+        // 2) Prefixo em qualquer palavra do titulo (ex: "cam" bate em "camisa")
+        const titleWords = normTitle.split(' ');
+        if (normQuery.length >= 2 && titleWords.some(w => w.startsWith(normQuery))) return true;
+
+        // 3) Detecta categoria pelo que foi digitado (ex: "cami" -> categoria camisa)
         const cat = getCategoryForQuery(normQuery);
         if (cat) {
             const { must, exclude } = categories[cat];
+            if (cat === 'camisa' || cat === 'premium') {
+                const isTimeShirt = categories['time'].must.some(w => normTitle.includes(w));
+                if (isTimeShirt) return false;
+            }
             const hasRequired = must.some(w => normTitle.includes(w));
             const hasExcluded = exclude.some(w => normTitle.includes(w));
             return hasRequired && !hasExcluded;
         }
 
-        // 2) Query com múltiplas palavras: todas devem bater no título
+        // 4) Cada palavra da query como prefixo ou substring no titulo
+        const queryWords = normQuery.split(' ').filter(w => w.length >= 1);
         if (queryWords.length > 1) {
             return queryWords.every(qw =>
                 normTitle.includes(qw) || titleWords.some(tw => tw.startsWith(qw))
             );
-        }
-
-        // 3) Query de 1 palavra: só bate se for palavra exata ou prefixo (mín. 3 letras)
-        if (normQuery.length >= 2) {
-            if (titleWords.includes(normQuery)) return true;
-            if (normQuery.length >= 3 && titleWords.some(w => w.startsWith(normQuery))) return true;
         }
 
         return false;
@@ -217,12 +235,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const normQuery = normalize(query);
         const cat = getCategoryForQuery(normQuery);
+        const isCamisaFilter = cat === 'camisa' || cat === 'premium';
         const isBonesFilter = cat === 'bones' || normQuery === 'bones' || normQuery === 'bonés';
         const isSectionFilter = {
             'acessorio': 'sec-acessorios',
             'perfume': 'sec-perfumes',
             'chinelo': 'sec-chinelos',
-            'relogios': 'sec-relogios',
         }[cat];
 
         const seen = new Set();
@@ -232,6 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const title = c.querySelector('h3').textContent.trim();
             const section = c.closest('section');
 
+            if (isCamisaFilter && section && section.id === 'sec-times') return;
 
             if (isBonesFilter) {
                 if (!section || section.id !== 'sec-bones') return;
@@ -351,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
         searchDropdown.classList.remove('active');
         document.getElementById('searchResultsPage').classList.remove('active');
         document.getElementById('contentMain').classList.remove('hidden');
-        if (window.innerWidth > 900) searchInput.focus();
+        searchInput.focus();
     };
 
     // ================= BANNERS =================

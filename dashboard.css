@@ -1247,4 +1247,42 @@ body::before {
     .banner-piramide-base .banner-piramide-item {
         height: 160px;
     }
+}/* =====================================================
+   PATCH DE PERFORMANCE — adicionar ao FINAL do dashboard.css
+   ===================================================== */
+
+/* 1. Reduz delay das animações de entrada para não parecer lento */
+.sidebar    { animation-duration: 0.4s; }
+.topo       { animation-duration: 0.4s; animation-delay: 0.05s; }
+.banner     { animation-duration: 0.5s; animation-delay: 0.1s; }
+.categorias-container { animation-duration: 0.4s; animation-delay: 0.15s; }
+.produtos   { animation-duration: 0.4s; animation-delay: 0.2s; }
+
+/* 2. Reserva espaço para imagens dos cards antes de carregar (evita CLS) */
+.card-img-container img {
+    /* O browser já vai usar os atributos width/height do HTML para calcular
+       o aspect-ratio, mas isso garante que nenhuma imagem "empurre" o layout */
+    content-visibility: auto;
+}
+
+/* 3. Placeholder cinza enquanto imagem carrega — elimina o "flash branco" */
+.card-img-container {
+    background: rgba(255,255,255,0.04);
+}
+
+/* 4. Skeleton loader sutil nas imagens de frente durante carregamento */
+.img-frente:not([complete]) {
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+    background-size: 200% 100%;
+    animation: skeleton 1.2s ease infinite;
+}
+
+@keyframes skeleton {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 5. Imagens de categorias — reserva espaço circular antes de carregar */
+.cat img {
+    background: rgba(255,255,255,0.05);
 }
